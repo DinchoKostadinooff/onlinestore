@@ -11,7 +11,7 @@ var ctrlAuth = require('../controllers/authentication');
 var ctrlProduct = require('../controllers/product');
 
 // profile
-router.get('/profile', auth, ctrlProfile.profileRead);
+router.get('/user/profile', auth, ctrlProfile.profileRead);
 router.post('/user/products', auth, ctrlProduct.createProduct);
 
 // authentication
