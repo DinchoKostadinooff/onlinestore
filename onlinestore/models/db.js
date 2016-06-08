@@ -47,3 +47,4 @@ process.on('SIGTERM', function() {
 
 
 require('./users');
+require('./products');
