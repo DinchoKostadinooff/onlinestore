@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User');
 var Product = mongoose.model('Product');
 
+/* private routes*/
 module.exports.createProduct = function(req, res) {
     if (!req.payload._id) {
         res.status(401).json({
@@ -178,3 +179,56 @@ module.exports.getProduct = function(req, res) {
 
 };
 
+//public routes
+
+module.exports.getAllProducts = function(req, res) {
+
+
+                Product.find(function(err,product) {
+                    if (err){
+                        res.status(401).json({
+                            "message" :err
+                        });}else{
+                        res.json({
+                            products: product
+                        });
+                    }
+
+                });
+
+
+};
+
+module.exports.getProductById = function(req, res) {
+
+                Product.findById(req.params.id, function(err, product) {
+                    if (err){
+                        res.status(401).json({
+                            "message" :err
+                        });}else{
+                        res.json({
+                            product: product
+                        });
+                    }
+
+
+                });
+
+};
+
+module.exports.getProductByCategory = function(req, res) {
+
+    Product.find({category:req.params.id}, function(err, product) {
+        if (err){
+            res.status(401).json({
+                "message" :err
+            });}else{
+            res.json({
+                products: product
+            });
+        }
+
+
+    });
+
+};

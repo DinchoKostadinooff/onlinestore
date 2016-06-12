@@ -17,6 +17,11 @@ router.put('/user/products/:id', auth, ctrlProduct.updateProduct);
 router.delete('/user/products/:id', auth, ctrlProduct.deleteProduct);
 router.get('/user/products', auth, ctrlProduct.getProduct);
 
+
+//public routes
+router.get('/products', ctrlProduct.getAllProducts);
+router.get('/product/:id', ctrlProduct.getProductById);
+router.get('/products/:id', ctrlProduct.getProductByCategory);
 // authentication
 router.post('/register', ctrlAuth.register);
 router.post('/login', ctrlAuth.login);
