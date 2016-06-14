@@ -8,9 +8,9 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 
 // Bring in the data model
-require('./models/db');
+require('./onlinestore-api/models/db');
 // [SH] Bring in the Passport config after model is defined
-require('./config/passport');
+require('./onlinestore-api/config/passport');
 
 
 // Bring in the routes for the API (delete the default routes)
@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(express.static(path.join(__dirname, 'app_client')));
+app.use(express.static(path.join(__dirname, 'onlinestore-client')));
 
 
 app.use(passport.initialize());
@@ -38,7 +38,7 @@ app.use(passport.initialize());
 app.use('/api', routesApi);
 
 app.use(function(req, res) {
-    res.sendFile(path.join(__dirname, 'app_client', 'index.html'));
+    res.sendFile(path.join(__dirname, 'onlinestore-client', 'index.html'));
 });
 
 
