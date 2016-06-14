@@ -74,3 +74,39 @@ module.exports.deleteProduct = function(req, res) {
     }
 
 };
+module.exports.getShoppingCard= function(req, res) {
+    if (!req.payload._id) {
+        res.status(401).json({
+            "message" : "UnauthorizedError: private profile"
+        });
+    } else {
+        User
+            .findById(req.payload._id)
+            .exec(function(err, user) {
+                ShoppingCard.find({userId:user.id}, function(err,shoppingCard) {
+                    if (err){
+                        res.status(401).json({
+                            "message" :err
+                        });}else{
+                                Product.find({id:shoppingCard.id}, function(err,product) {
+                                    if (err){
+                                        res.status(401).json({
+                                            "message" :err
+                                        });}else{
+                                        res.json({
+                                            products: product
+                                        });
+                                    }
+
+                                });
+
+                    }
+
+                });
+
+
+
+            });
+    }
+
+};
