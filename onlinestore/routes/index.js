@@ -6,10 +6,10 @@ var auth = jwt({
   userProperty: 'payload'
 });
 
-var ctrlProfile = require('onlinestore-api/controllers/profile');
-var ctrlAuth = require('onlinestore-api/controllers/authentication');
-var ctrlProduct = require('onlinestore-api/controllers/product');
-var ctrlShoppingCard = require('onlinestore-api/controllers/shoppingCard');
+var ctrlProfile = require('../controllers/profile');
+var ctrlAuth = require('../controllers/authentication');
+var ctrlProduct = require('../controllers/product');
+var ctrlShoppingCard = require('../controllers/shoppingCard');
 
 // UserProfile
 

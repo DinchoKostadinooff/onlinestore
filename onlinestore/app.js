@@ -8,9 +8,9 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 
 // Bring in the data model
-require('./onlinestore-api/models/db');
+require('./models/db.js');
 // [SH] Bring in the Passport config after model is defined
-require('./onlinestore-api/config/passport');
+require('./config/passport');
 
 
 // Bring in the routes for the API (delete the default routes)

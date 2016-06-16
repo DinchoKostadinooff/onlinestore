@@ -8,7 +8,7 @@
   function meanData ($http, authentication) {
 
     var getProfile = function () {
-      return $http.get('/api/profile', {
+      return $http.get('/api/user/profile', {
         headers: {
           Authorization: 'Bearer '+ authentication.getToken()
         }
